@@ -190,7 +190,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'airtel-starlink.html'));
 });
 
-const pages = ['airtel-starlink.html', 'trial.html', 'pto.html', 'mwish.html'];
+const pages = ['airtel-starlink.html', 'index.html', 'pto.html', 'mwish.html'];
 pages.forEach((page) => {
   app.get('/' + page, (req, res) => {
     res.sendFile(path.join(__dirname, page), (err) => {
